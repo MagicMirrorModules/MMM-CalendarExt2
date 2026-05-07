@@ -90,7 +90,12 @@ transform: (event) => {
 };
 ```
 
-> **Note:** Since MagicMirror² v2.35, the config is delivered to the browser via JSON. In browser-based setups, callback functions can break when they depend on symbols outside the serialized config scope (for example, standalone helper functions declared outside `let config = {}`). Keep `transform` self-contained or reference helpers through `config.myHelper(event)`. For icon assignment by category, prefer `iconMap` because it is plain data and works in all setups.
+> **Note:** Since MagicMirror² v2.35, the config is delivered to the browser via JSON.
+> In browser-based setups, callback functions can break when they depend on
+> symbols outside the serialized config scope (for example, standalone helper
+> functions declared outside `let config = {}`). Keep `transform` self-contained
+> or reference helpers through `config.myHelper(event)`. For icon assignment by
+> category, prefer `iconMap` because it is plain data and works in all setups.
 
 # Icon Map
 
