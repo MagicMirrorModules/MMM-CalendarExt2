@@ -90,11 +90,11 @@ transform: (event) => {
 };
 ```
 
-> **Note:** MagicMirror² fetches the module config from the server as JSON, which means **JavaScript functions in the config are lost** at runtime. The `transform` function only works when the config is loaded directly (e.g., Electron mode with a local `config.js` evaluated in-process). For standard browser-based setups, use `iconMap` instead.
+> **Note:** Since MagicMirror² v2.35, the config is delivered to the browser via JSON. In browser-based setups, callback functions can break when they depend on symbols outside the serialized config scope (for example, standalone helper functions declared outside `let config = {}`). Keep `transform` self-contained or reference helpers through `config.myHelper(event)`. For icon assignment by category, prefer `iconMap` because it is plain data and works in all setups.
 
 # Icon Map
 
-The `iconMap` view option assigns icons to events based on their categories. Unlike `transform`, it uses a plain object (string → string mapping) that survives JSON serialization.
+The `iconMap` view option assigns icons to events based on their categories. Unlike `transform`, it is plain data (string → string mapping), survives JSON serialization, and works in all MagicMirror² setups.
 
 ```js
 iconMap: {
@@ -106,33 +106,8 @@ iconMap: {
 }
 ```
 
-Icon names use the format `prefix:name` (e.g. `noto:hospital`, `mdi:home`). The old
-`prefix-name` format (e.g. `noto-hospital`) is still accepted but will log a
-deprecation warning in the browser console.
-
 Icon names use the `prefix:name` format from [Iconify](https://icon-sets.iconify.design/) (e.g. `noto:hospital`, `mdi:home`). For backwards compatibility, the legacy `prefix-name` format (e.g. `noto-hospital`) is automatically converted.
 
-For each event, the module checks `event.categories` (in order) against the keys of `iconMap`. The first match sets `event.icon`. If the event already has an icon set (e.g., by `transform`), `iconMap` does not override it.
+For each event, the module checks `event.categories` (in order) against the keys of `iconMap`. The first match sets `event.icon`. If the event already has an icon set (for example from calendar config defaults or `transform`), `iconMap` does not override it.
 
 For `categories` to be populated, the iCal event must include a `CATEGORIES` property. See [Event-Object.md](Event-Object.md) for the full event shape.
-
-You can also use `categories` with `transform` to assign icons, which is the older approach:
-
-```js
-transform: (event) => {
-  const iconMap = {
-    Birthday: "fxemoji:birthdaycake",
-    Health: "noto:hospital",
-    Work: "noto:briefcase",
-    Vacation: "noto:beach-with-umbrella",
-    Family: "noto:family"
-  };
-  for (const [category, icon] of Object.entries(iconMap)) {
-    if (event.categories.includes(category)) {
-      event.icon = icon;
-      break;
-    }
-  }
-  return event;
-};
-```
