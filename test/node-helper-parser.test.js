@@ -54,6 +54,17 @@ const ICS_TWO_EVENTS = joinIcs(
   "END:VCALENDAR"
 );
 
+const ICS_EVENT_WITHOUT_SUMMARY = joinIcs(
+  "BEGIN:VCALENDAR",
+  "VERSION:2.0",
+  "BEGIN:VEVENT",
+  "UID:evt-no-summary",
+  `DTSTART:${dtDay}T140000Z`,
+  `DTEND:${dtDay}T150000Z`,
+  "END:VEVENT",
+  "END:VCALENDAR"
+);
+
 const makeCalendar = (overrides = {}) => ({
   uid: 0,
   name: "test-cal",
@@ -147,5 +158,15 @@ describe("node_helper – parser() event filtering", () => {
 
     const [, events] = sendSocketNotification.mock.calls[0].arguments;
     assert.equal(events.length, 1);
+  });
+
+  it("normalizes missing event summaries to an empty title", () => {
+    const {ctx, sendSocketNotification} = makeCtx();
+
+    ctx.parser(makeCalendar(), ICS_EVENT_WITHOUT_SUMMARY);
+
+    const [, events] = sendSocketNotification.mock.calls[0].arguments;
+    assert.equal(events.length, 1);
+    assert.equal(events[0].title, "");
   });
 });
