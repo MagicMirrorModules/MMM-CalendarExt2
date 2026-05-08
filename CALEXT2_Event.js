@@ -1,4 +1,4 @@
-/* global dayjs */
+/* global dayjs IconHelpers */
 // eslint-disable-next-line no-unused-vars
 class Event {
   constructor (data, slot) {
@@ -116,7 +116,7 @@ class Event {
     if (event.icon) {
       const iconDom = document.createElement("iconify-icon");
       iconDom.classList.add("eventIcon");
-      iconDom.setAttribute("icon", Event.normalizeIconName(event.icon));
+      iconDom.setAttribute("icon", IconHelpers.normalizeIconName(event.icon));
       mainDom.appendChild(iconDom);
     }
     const title = document.createElement("div");
@@ -166,25 +166,6 @@ class Event {
     return eventDom;
   }
 
-  /**
-   * Normalize icon name from legacy Iconify v1 format (prefix-name) to v2+
-   * format (prefix:name). If the name already contains ":", it is returned
-   * as-is to support the modern format directly.
-   * TODO: Remove this backwards-compatibility function after a suitable deprecation period (so maybe in 2028).
-   * @param {string} name - The icon name to normalize
-   * @returns {string} Normalized icon name with ":" separator
-   */
-  static normalizeIconName (name) {
-    if (name.includes(":")) return name;
-    const dashIndex = name.indexOf("-");
-    if (dashIndex > 0) {
-      const converted = `${name.substring(0, dashIndex)}:${name.substring(dashIndex + 1)}`;
-      // eslint-disable-next-line no-console
-      console.warn(`[CALEXT2] Deprecated icon name format "${name}" — use "${converted}" instead (prefix:name).`);
-      return converted;
-    }
-    return name;
-  }
 
   /**
    * Applies category CSS classes and data-attribute to eventDom,

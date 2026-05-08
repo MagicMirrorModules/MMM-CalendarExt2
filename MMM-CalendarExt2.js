@@ -224,6 +224,7 @@ Module.register("MMM-CalendarExt2", {
   getScripts () {
     const scripts = [
       this.file("lib/slot-date-helpers.js"),
+      this.file("lib/icon-helpers.js"),
       this.file("node_modules/dayjs/dayjs.min.js"),
       this.file("node_modules/dayjs/plugin/utc.js"),
       this.file("node_modules/dayjs/plugin/timezone.js"),
