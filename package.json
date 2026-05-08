@@ -29,7 +29,7 @@
     "prepare": "simple-git-hooks || true",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "release": "commit-and-tag-version --commit-all",
+    "release": "SKIP_SIMPLE_GIT_HOOKS=1 commit-and-tag-version --commit-all",
     "stylelint": "stylelint **/*.css",
     "stylelint:fix": "stylelint **/*.css --fix",
     "test": "node --run lint && node --run prettier && node --run test:unit",
@@ -45,7 +45,6 @@
       "prettier --write"
     ],
     "*.md": [
-      "markdownlint-cli2 --fix",
       "prettier --write"
     ]
   },
