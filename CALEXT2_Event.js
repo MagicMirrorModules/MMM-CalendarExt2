@@ -45,15 +45,6 @@ class Event {
     return 0;
   }
 
-  /*
-   * TODO: To implement
-
-      DrawSleeve(slot, sleeve) {
-      ...
-      }
-
-   */
-
   makeEventDom () {
     const {locale} = this;
     const now = locale ? dayjs().locale(locale) : dayjs();
