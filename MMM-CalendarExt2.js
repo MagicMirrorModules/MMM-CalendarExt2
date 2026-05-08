@@ -1,4 +1,3 @@
-/* eslint-disable no-eval */
 /* global Module Scene config dayjs */
 
 Module.register("MMM-CalendarExt2", {
@@ -338,14 +337,17 @@ Module.register("MMM-CalendarExt2", {
     };
 
     if (typeof this.config.firstDrawingDelay === "string") {
+      // eslint-disable-next-line no-eval
       this.config.firstDrawingDelay = eval(this.config.firstDrawingDelay);
     }
 
     if (typeof this.config.updateInterval === "string") {
+      // eslint-disable-next-line no-eval
       this.config.updateInterval = eval(this.config.updateInterval);
     }
 
     if (typeof this.config.rotateInterval === "string") {
+      // eslint-disable-next-line no-eval
       this.config.rotateInterval = eval(this.config.rotateInterval);
     }
 
@@ -376,6 +378,7 @@ Module.register("MMM-CalendarExt2", {
         arrs[i].filter = JSON.stringify({filter: arrs[i].filter.toString()});
       }
       if (typeof arrs[i].scanInterval === "string") {
+        // eslint-disable-next-line no-eval
         arrs[i].scanInterval = eval(arrs[i].scanInterval);
       }
     }
