@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.3.5](https://github.com/MagicMirrorModules/MMM-CalendarExt2/compare/v2.3.4...v2.3.5) (2026-05-08)
+
+
+### Bug Fixes
+
+* handle missing SUMMARY without crashing transform ([46bdd94](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/46bdd94760c6fa2f077a1c871ae3536151692f47)), closes [#465](https://github.com/MagicMirrorModules/MMM-CalendarExt2/issues/465)
+
+
+### Documentation
+
+* fix markdown line length ([56fa86e](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/56fa86ea05a4cc17f7774a84f6bb17925ffdc344))
+
+
+### Chores
+
+* make release deterministic by skipping pre-commit hooks ([9069267](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/90692674275bbe84fa477f04dd1e24d211b95a71))
+* update devDependencies ([f40df39](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/f40df39df1f4531dfc4cb323b7267aa60b5680be))
+
+
+### Code Refactoring
+
+* extract icon normalization helper ([56ad4f0](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/56ad4f027315bd017fa5730cd6e49677a4f3dddb))
+* narrow no-eval suppression to per-line instead of file-wide ([5eeb50b](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/5eeb50bb1eab4aa0b297aa2a6252434f6706ed56))
+* remove unimplemented DrawSleeve stub ([6fd670e](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/6fd670e8e3d2afd3a1bf1f8f0d2a6e6b6e5c6611))
+
 ## [2.3.4](https://github.com/MagicMirrorModules/MMM-CalendarExt2/compare/v2.3.3...v2.3.4) (2026-05-07)
 
 ### Documentation
