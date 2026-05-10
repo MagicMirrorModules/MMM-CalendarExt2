@@ -3,7 +3,8 @@ const config = {
     {
       "files": "*.md",
       "options": {
-        "parser": "markdown"
+        "parser": "markdown",
+        "embeddedLanguageFormatting": "off"
       }
     }
   ],

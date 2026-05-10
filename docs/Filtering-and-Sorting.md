@@ -13,7 +13,7 @@ filter: (event) => {
 }
 ```
 
-By Example
+By Example:
 
 ```js
 filter: (event) => {
@@ -39,7 +39,7 @@ sort: (eventA, eventB) => {
 }
 ```
 
-By Example;
+By Example:
 
 ```js
 sort: (a, b) => {
@@ -49,7 +49,7 @@ sort: (a, b) => {
 
 This code says, **If duration of event A is smaller than that of event B, event A is prior to event B - sort by smaller duration**
 
-Example 2;
+Example 2:
 
 ```js
 sort: (a, b) => {
@@ -65,37 +65,58 @@ This means **Sort by calendar Sequence first. when sequence of two events are sa
 
 # Transforming
 
-You can also use transforming in `view`. (`calendar` doesn't support transforming, because to display transformed events depends on each view.)
+You can modify event properties (like icon, color, or title) before rendering in `view`. (`calendar` doesn't support transforming, because transformed events depend on each view.)
 
-Concept;
+**⚠️ Prefer `iconMap`**: For assigning icons by category, use `iconMap` (see [Icon Map](#icon-map) below) instead of `transform`. It's simpler, doesn't require null guards, survives JSON serialization in all MagicMirror² setups, and is less error-prone.
 
-```js
-transform: (event)=>{
-  IF THIS event NEED some property TO BE CHANGED,
-  CHANGE THAT property
-  THEN, return event
-}
-
-```
-
-By Example;
+Concept:
 
 ```js
 transform: (event) => {
-  if (event.title.search("Birthday") > -1) {
-    // If the event might include "Birthday" in its title,
-    event.icon = "fxemoji:birthdaycake"; // Set icon of that event
+  // Inspect and modify event properties as needed
+  if (/* some condition on event */) {
+    event.icon = "some-icon";  // or modify color, title, etc.
   }
-  return event; // Return that event.
+  return event;
+}
+```
+
+**Example 1 – Single check (safest):**
+
+```js
+transform: (event) => {
+  if (event.title?.includes("Birthday")) {
+    event.icon = "fxemoji:birthday-cake";
+  }
+  return event;
 };
 ```
 
-> **Note:** Since MagicMirror² v2.35, the config is delivered to the browser via JSON.
-> In browser-based setups, callback functions can break when they depend on
-> symbols outside the serialized config scope (for example, standalone helper
-> functions declared outside `let config = {}`). Keep `transform` self-contained
-> or reference helpers through `config.myHelper(event)`. For icon assignment by
-> category, prefer `iconMap` because it is plain data and works in all setups.
+**Example 2 – Multiple checks (best practice):**
+
+```js
+transform: (event) => {
+  const title = (event.title || "").toLowerCase();
+
+  if (title.includes("birthday")) {
+    event.icon = "fxemoji:birthday-cake";
+  } else if (title.includes("vacation")) {
+    event.icon = "noto:beach-with-umbrella";
+  } else if (title.includes("meeting")) {
+    event.icon = "noto:briefcase";
+  }
+
+  return event;
+};
+```
+
+**⚠️ Null-safety & self-contained rules:**
+
+- Always guard `event.title` before calling methods on it
+- Use `event.title?.includes(...)` (optional chaining) for single checks
+- Use `(event.title || "").toLowerCase()` before multiple checks
+- Keep `transform` self-contained—don't reference external helpers
+- ❌ Old pattern: `event.title.search(...)` **will crash** if title is missing (see [#465](https://github.com/MagicMirrorModules/MMM-CalendarExt2/issues/465))
 
 # Icon Map
 

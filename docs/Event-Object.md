@@ -20,7 +20,7 @@ isCancelled: false;
 location: "";
 startDate: "1546631100";
 startDateJ: "2019-01-04T19:45:00.000Z";
-title: "Team T.B.A. - Tottenham Hotspur";
+title: "Team T.B.A. - Tottenham Hotspur"; // Can be null or empty string
 uid: "1:1546631100:1546638300:op54vk5s1r0ivl8i165ampip88@google.com";
 ms_busystatus: "BUSY"; // Only for calendar from MS Outlook. Available : "BUSY", "FREE", "TENTATIVE", "OOF"
 categories: ["Work", "Important"]; // Array of category strings from CATEGORIES property; empty array if absent
