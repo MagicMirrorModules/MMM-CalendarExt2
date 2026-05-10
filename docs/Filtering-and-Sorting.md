@@ -2,9 +2,11 @@
 
 ## Filtering
 
-You can filter the events in `calendar` and `view`.
-There could be many cases to use filter, I make it as callback function. Sorry for all non-developers. But it's not so difficult.
-The basic concept is here.
+You can filter events in `calendar` and `view` using callback functions. This lets you control which events are displayed.
+
+**When to use:** Show only events matching specific criteria (e.g., all-day events, specific calendars, keywords in title).
+
+Concept:
 
 ```js
 filter: (event) => {
@@ -27,10 +29,23 @@ filter: (event) => {
 
 This code says **If this event is fullday event, use it. But if not so, drop it from event list**. When you need only `fullday` events, this could be useful.
 
+**Advanced example – Combine multiple conditions:**
+
+```js
+filter: (event) => {
+  return event.isFullday === false && event.title.includes("Birthday");
+};
+```
+
+This shows only non-fullday events with "Birthday" in the title.
+
 ## Sorting
 
-You can also use sorting in `view`. (`calendar` doesn't support sorting, because to display sorted events depends on each view.)
-Concept is similar.
+You can sort events in `view` using callback functions. The sort order affects how events are displayed.
+
+**When to use:** Change event order by duration, calendar, or custom criteria. Not available for `calendar` configuration.
+
+Concept:
 
 ```js
 sort: (eventA, eventB) => {
@@ -66,6 +81,8 @@ This means **Sort by calendar Sequence first. when sequence of two events are sa
 ## Transforming
 
 You can modify event properties (like icon, color, or title) before rendering in `view`. (`calendar` doesn't support transforming, because transformed events depend on each view.)
+
+**When to use:** Dynamically assign icons, colors, or other properties based on event data. For simple category-to-icon mapping, prefer `iconMap` instead.
 
 **⚠️ Prefer `iconMap`**: For assigning icons by category, use `iconMap` (see [Icon Map](#icon-map) below) instead of `transform`. It's simpler, doesn't require null guards, survives JSON serialization in all MagicMirror² setups, and is less error-prone.
 
@@ -121,6 +138,8 @@ transform: (event) => {
 ## Icon Map
 
 The `iconMap` view option assigns icons to events based on their categories. Unlike `transform`, it is plain data (string → string mapping), survives JSON serialization, and works in all MagicMirror² setups.
+
+**When to use:** For simple category-based icon assignment. Works in all MagicMirror² setups without null-guard worries.
 
 ```js
 iconMap: {
