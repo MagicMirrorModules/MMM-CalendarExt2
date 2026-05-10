@@ -2,13 +2,13 @@
 
 - **View** is a specific look and definition to display events. Each view could have several calendars which are defined in `calendars` section. And each view instance can be reusable in multi-scenes.
 - There are several view modes;
-  - [upcoming](Views/current,-upcoming.md)
-  - [current](Views/current,-upcoming.md)
+  - [upcoming](Views/current-upcoming.md)
+  - [current](Views/current-upcoming.md)
   - [daily](Views/daily.md)
-  - [weekly](Views/weekly,-monthly.md)
-  - [monthly](Views/weekly,-monthly.md)
-  - [week](Views/week,-month.md)
-  - [month](Views/week,-month.md)
+  - [weekly](Views/weekly-monthly.md)
+  - [monthly](Views/weekly-monthly.md)
+  - [week](Views/week-month.md)
+  - [month](Views/week-month.md)
   - [legend](Views/legend.md)
 - `views:[]` should have at least one or more `view` as its items.
 
