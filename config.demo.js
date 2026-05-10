@@ -19,14 +19,14 @@ const config =
               position: "fullscreen_below",
               calendars: ["Demo categories"],
               iconMap: {
-                Birthday: "fxemoji-birthdaycake",
-                Health: "noto-hospital",
-                Work: "noto-briefcase",
-                Vacation: "noto-beach-with-umbrella",
-                Leisure: "noto-musical-notes",
-                Family: "noto-family",
-                Deadline: "noto-alarm-clock",
-                Important: "noto-warning"
+                Birthday: "fxemoji:birthdaycake",
+                Health: "noto:hospital",
+                Work: "noto:briefcase",
+                Vacation: "noto:beach-with-umbrella",
+                Leisure: "noto:musical-notes",
+                Family: "noto:family",
+                Deadline: "noto:alarm-clock",
+                Important: "noto:warning"
               }
             }
           ],
