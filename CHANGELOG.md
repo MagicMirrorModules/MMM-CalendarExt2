@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [2.3.6](https://github.com/MagicMirrorModules/MMM-CalendarExt2/compare/v2.3.5...v2.3.6) (2026-05-10)
+
+
+### Documentation
+
+* fix View filenames - replace comma-dash with dash ([116a828](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/116a828e5447b545c11a8ed457c99af0543ea1a7))
+* improve event filtering, sorting & transformation guidance ([7080781](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/7080781f159f46e37547574911e8647c087f2146))
+* improve Transforming section with safer examples and iconMap guidance ([9b12e9c](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/9b12e9c7a21099a6d40e77c982f948749e3c9740)), closes [#465](https://github.com/MagicMirrorModules/MMM-CalendarExt2/issues/465)
+* normalize headings ([9406390](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/9406390a4509fe5e4d2db29bbf9022ac59eb1031))
+
+
+### Chores
+
+* **demo:** migrate iconMap to prefix:name format ([74ee700](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/74ee70002593ec5142e748bbd135e0a23e182233))
+* update devDependencies ([861cb04](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/861cb046fe2fb190c7abba083fb4c8fcf53e0bd3))
+
+
+### Code Refactoring
+
+* **fetcher:** remove dead selfSignedCert code ([f1e8be3](https://github.com/MagicMirrorModules/MMM-CalendarExt2/commit/f1e8be36617ea037b505c77b9ae2ab03fa2a81b0))
+
 ## [2.3.5](https://github.com/MagicMirrorModules/MMM-CalendarExt2/compare/v2.3.4...v2.3.5) (2026-05-08)
 
 
