@@ -1,6 +1,6 @@
-<!-- markdownlint-disable-file MD025 -->
+# Filtering, Sorting, Transforming & Icon Map
 
-# Filtering
+## Filtering
 
 You can filter the events in `calendar` and `view`.
 There could be many cases to use filter, I make it as callback function. Sorry for all non-developers. But it's not so difficult.
@@ -27,7 +27,7 @@ filter: (event) => {
 
 This code says **If this event is fullday event, use it. But if not so, drop it from event list**. When you need only `fullday` events, this could be useful.
 
-# Sorting
+## Sorting
 
 You can also use sorting in `view`. (`calendar` doesn't support sorting, because to display sorted events depends on each view.)
 Concept is similar.
@@ -63,7 +63,7 @@ sort: (a, b) => {
 
 This means **Sort by calendar Sequence first. when sequence of two events are same, compare startDate and earlier is prior**.
 
-# Transforming
+## Transforming
 
 You can modify event properties (like icon, color, or title) before rendering in `view`. (`calendar` doesn't support transforming, because transformed events depend on each view.)
 
@@ -118,7 +118,7 @@ transform: (event) => {
 - Keep `transform` self-contained—don't reference external helpers
 - ❌ Old pattern: `event.title.search(...)` **will crash** if title is missing (see [#465](https://github.com/MagicMirrorModules/MMM-CalendarExt2/issues/465))
 
-# Icon Map
+## Icon Map
 
 The `iconMap` view option assigns icons to events based on their categories. Unlike `transform`, it is plain data (string → string mapping), survives JSON serialization, and works in all MagicMirror² setups.
 

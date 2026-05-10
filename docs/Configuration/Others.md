@@ -1,6 +1,4 @@
-<!-- markdownlint-disable-file MD025 -->
-
-# Other configurations
+# Other Configurations
 
 | field               | value type  | value example                                           | default value      | memo                                                                                                             |
 | ------------------- | ----------- | ------------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------- |
@@ -10,7 +8,7 @@
 | firstDrawingDelay   | Number (ms) | `1000*10`                                               | `1000`             | Sometimes, calendar parsing could be somewhat late. You can set delay for first drawing to wait calendar parsing |
 | deduplicateEventsOn | Array       | `["startDate","endDate","duration","title","location"]` | `[]`               | define which attributes must be equal in order to remove duplicate events                                        |
 
-# Event Deduplication
+## Event Deduplication
 
 Please read [pull request #18](https://github.com/eouia/MMM-CalendarExt2/pull/18)
 on the motivation for event deduplication.
