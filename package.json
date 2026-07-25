@@ -77,7 +77,7 @@
     ]
   },
   "dependencies": {
-    "dayjs": "^1.11.20",
+    "dayjs": "^1.11.21",
     "iconify-icon": "^3.0.2",
     "node-ical": "^0.26.1"
   },
